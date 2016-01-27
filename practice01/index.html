@@ -9,6 +9,16 @@
 
         <script>
 
+            /**
+             * Returns the subset of strings in compareArray with longer length than compareString
+             * @param {string} compareString
+             * @param {Array.<string>} compareArray
+             * @returns {Array.<string>} The set of strings in compareArray with longer length than compareString.
+             */
+            function biggerWords(compareString, compareArray) {
+                return compareArray.filter(function(innerString){return innerString.length > compareString.length});
+            }
+
         </script>
 
     </head>
