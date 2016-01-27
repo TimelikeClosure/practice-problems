@@ -9,7 +9,21 @@
 
         <script>
 
-
+            /**
+             * Groups the elements from an array by type.
+             * @param flatArray
+             * @returns {Array} Contains the elements of flatArray, grouped in sub-arrays by type.
+             */
+            function groupArrayByType (flatArray) {
+                compositeArray = [];
+                var type;
+                while (flatArray.length > 0) {
+                    type = typeof(flatArray[0]);
+                    compositeArray[compositeArray.length] = flatArray.filter(function(value){return typeof(value)==type;});
+                    flatArray = flatArray.filter(function(value){return typeof(value)!=type;});
+                }
+                return compositeArray;
+            }
 
         </script>
 
