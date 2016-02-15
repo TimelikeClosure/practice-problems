@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+
+        <meta charset="utf-8">
+        <title>Practice Problem 4</title>
+        <script>
+
+            /**
+             * Sorts the given array of strings alphabetically using a bubble sort and returns the result.
+             * @param {Array} stringArray
+             * @returns {Array}
+             */
+            function alphabetizeArray(stringArray) {
+                for (var i = stringArray.length - 1; i >= 0; i--) {
+                    var swappedThisPass = false; // Indicate no swaps this pass when starting a new pass
+                    for (var j = 0; j < i; j++) {
+                        if (stringArray[j] > stringArray[j+1]) { // If two adjacent elements need to be swapped, swap them and indicate there was a swap this pass
+                            var temp = stringArray[j];
+                            stringArray[j] = stringArray[j+1];
+                            stringArray[j+1] = temp;
+                            swappedThisPass = true;
+                        }
+                    }
+                    if (!swappedThisPass) { // Returns early if a full pass is made without any swaps
+                        return stringArray;
+                    }
+                }
+                return stringArray;
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
