@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8"/>
+        <script>
+
+            /**
+             * FizzBuzzFizzBuzzFizzBuzzFizzBuzzFizzBuzzFizzBuzzFizzBuzzFizzBuzzFizzBuzzFizzBuzz
+             */
+            function fizzBuzz() {
+                for(var i = 1; i <= 100; i++) {
+                    var line = "";
+                    if (i % 3 == 0) {
+                        line += "Fizz";
+                    }
+                    if (i % 5 == 0) {
+                        line += "Buzz";
+                    }
+                    console.log(line || i);
+                }
+            }
+
+        </script>
+    </head>
+
+    <body></body>
+</html>
