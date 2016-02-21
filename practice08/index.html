@@ -15,13 +15,10 @@
                 var cache = {};
                 for (var i = 0; i < string.length; i++) {
                     var char = string[i];
-                    if (cache.hasOwnProperty(char)){
-                        output += cache[char];
-                    } else {
-                        var code = char.charCodeAt(0);
-                        cache[char] = code;
-                        output += code;
+                    if (!cache.hasOwnProperty(char)){
+                        cache[char] = char.charCodeAt(0);
                     }
+                    output += cache[char];
                 }
                 return output;
             }
