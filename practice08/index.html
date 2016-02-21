@@ -10,17 +10,22 @@
 
             var cat_hat = "the cat in the hat";
 
-            function character_convert(string) {
-                var output = "";
-                var cache = {};
-                for (var i = 0; i < string.length; i++) {
-                    var char = string[i];
-                    if (!cache.hasOwnProperty(char)){
-                        cache[char] = char.charCodeAt(0);
+            /**
+             * character_convert - Converts the given string into a string of the corresponding UTF-8 character codes.
+             * @param {string} char_string - A string of characters to be converted.
+             * @returns {string} - A string of UTF-8 character codes.
+             */
+            function character_convert(char_string) {
+                var char_code_string = ""; // Create an empty string to concatenate character codes to
+                var code_cache = {}; // Create a cache for storing character codes
+                for (var i = 0; i < char_string.length; i++) { // Iterate over all characters in string
+                    var char = char_string[i]; // Obtain the current character
+                    if (!code_cache.hasOwnProperty(char)){ // If the current character isn't cached
+                        code_cache[char] = char.charCodeAt(0); // Cache the current character
                     }
-                    output += cache[char];
+                    char_code_string += code_cache[char]; // Retrieve the code for the current character from the cache and concatenate to the character code string
                 }
-                return output;
+                return char_code_string; // return the character code string
             }
 
         </script>
