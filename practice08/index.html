@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Practice Problem 08</title>
+
+        <script>
+
+            var cat_hat = "the cat in the hat";
+
+            function character_convert(string) {
+                var output = "";
+                var cache = {};
+                for (var i = 0; i < string.length; i++) {
+                    var char = string[i];
+                    if (cache.hasOwnProperty(char)){
+                        output += cache[char];
+                    } else {
+                        var code = char.charCodeAt(0);
+                        cache[char] = code;
+                        output += code;
+                    }
+                }
+                return output;
+            }
+
+        </script>
+
+    </head>
+
+</html>
