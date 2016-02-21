@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+    <head lang="en">
+
+        <meta charset="utf-8">
+        <title>Practice Problem 09</title>
+        <script>
+
+            var test_array = ['cat','caterpillar','whale','accurate','smile','cactus','cute'];
+
+            function word_fit(fitString, searchArray) {
+                var fitRegEx = [];
+                for (var i = 0; i < fitString.length; i++) {
+                    fitRegEx.push(new RegExp(fitString[i]));
+                }
+                var output = [];
+                for (var i = 0; i < searchArray.length; i++) {
+                    var searchWord = searchArray[i];
+                    var match = true;
+                    for (var j = 0; j < fitRegEx.length; j++) {
+                        match = match && fitRegEx[j].test(searchWord);
+                    }
+                    if (match) {
+                        output.push(searchWord);
+                    }
+                }
+                return output;
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+    </body>
+
+</html>
