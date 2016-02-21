@@ -7,7 +7,22 @@
         <title>Practice Problem 07</title>
         <script>
 
+            var test = "I went to the store the other day. There was a talking orange head there. He was very smart for an orange. I also stopped by McDonald's to have a McMuffin.  Then, I got to speed-test a Big-Boy Scooter. That wasn't the most quiet thing in the world.  In fact, it spurred quite the rhythm.";
 
+            /**
+             * pigLatin - Converts the given phrase into Pig Latin and returns the result
+             * @param {string} phrase - phrase to be converted into Pig Latin
+             * @returns {string} - phrase in pig latin
+             */
+            function pigLatin(phrase) {
+                phrase = phrase.replace(/(\b[AEIOUaeiou][\w']*)(\b)/g, "$1yay$2"); // vowel rule
+            phrase = phrase.replace(/(\b)([Qq][Uu][B-DF-HJ-NP-TV-Zb-df-hj-np-tv-z]*)([AEIOUYaeiouy][\w']*)(\b)/g,"$1$3$2ay$4"); // consonant rule for "qu"
+                phrase = phrase.replace(/(\b)([B-DF-HJ-NP-TV-Zb-df-hj-np-tv-z]+)([AEIOUYaeiouy][\w']*)(\b)/g,"$1$3$2ay$4"); // consonant rule
+                phrase = phrase.replace(/(\b)([a-z])([\w']*)([A-Z])([\w']*\b)/g, function(m,m1,m2,m3,m4,m5,p){ // Returns capitalization to the first letter
+                    return m1 + m2.toUpperCase() + m3 + m4.toLowerCase() + m5;
+                });
+                return phrase;
+            }
 
         </script>
 
