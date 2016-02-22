@@ -6,8 +6,34 @@
         <meta charset="utf-8">
         <title>Practice Problem 10</title>
         <script>
+            "use strict";
+            var test = "abc";
 
+            function permutations(originalString) {
+                var output = [["", originalString]];
+                permute(output);
 
+                function permute(stringSets) {
+                    var output = [];
+                    for (var i = 0; i < stringSets.length; i++) {
+                        if (stringSets[i][1].length == 0) {
+                            output.push(stringSets[i][0]);
+                        } else {
+                            for (var j = 0; j < stringSets[i][1].length; j++) {
+                                var stringSet = [];
+                                stringSet.push(stringSets[i][0] + stringSets[i][1][j]);
+                                stringSet.push(stringSets[i][1].slice(0, j) + stringSets[i][1].slice(j+1));
+                                output.push(stringSet);
+                            }
+                        }
+                    }
+                    if (typeof output[0] == "string") {
+                        return output;
+                    } else {
+                        return permute(output);
+                    }
+                }
+            }
 
         </script>
 
