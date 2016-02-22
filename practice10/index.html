@@ -9,29 +9,32 @@
             "use strict";
             var test = "abc";
 
+            /**
+             * permutations - Takes in a string and returns all permutations of that string in an array.
+             * @param {string} originalString - A string to get all permutations of.
+             * @returns {string[]} - A list of all permutations of the given string.
+             */
             function permutations(originalString) {
                 var output = [["", originalString]];
-                permute(output);
+                return permute(output);
 
                 function permute(stringSets) {
                     var output = [];
-                    for (var i = 0; i < stringSets.length; i++) {
-                        if (stringSets[i][1].length == 0) {
+                    if (stringSets[0][1].length == 0) {
+                        for (var i = 0; i < stringSets.length; i++) {
                             output.push(stringSets[i][0]);
-                        } else {
-                            for (var j = 0; j < stringSets[i][1].length; j++) {
-                                var stringSet = [];
-                                stringSet.push(stringSets[i][0] + stringSets[i][1][j]);
-                                stringSet.push(stringSets[i][1].slice(0, j) + stringSets[i][1].slice(j+1));
-                                output.push(stringSet);
-                            }
+                        }
+                        return output;
+                    }
+                    for (var i = 0; i < stringSets.length; i++) {
+                        for (var j = 0; j < stringSets[i][1].length; j++) {
+                            var stringSet = [];
+                            stringSet.push(stringSets[i][0] + stringSets[i][1][j]);
+                            stringSet.push(stringSets[i][1].slice(0, j) + stringSets[i][1].slice(j+1));
+                            output.push(stringSet);
                         }
                     }
-                    if (typeof output[0] == "string") {
-                        return output;
-                    } else {
-                        return permute(output);
-                    }
+                    return permute(output);
                 }
             }
 
