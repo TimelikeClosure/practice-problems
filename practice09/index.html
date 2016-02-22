@@ -8,24 +8,66 @@
         <script>
 
             var test_array = ['cat','caterpillar','whale','accurate','smile','cactus','cute'];
+            var test_word = "cat";
 
+            /**
+             * word_fit - Takes in a string and an array of strings. Outputs an array of strings that contain the same
+             * letters as the single input string.
+             * @param {string} fitString
+             * @param {string[]} searchArray
+             * @returns {string[]}
+             */
             function word_fit(fitString, searchArray) {
-                var fitRegEx = [];
-                for (var i = 0; i < fitString.length; i++) {
-                    fitRegEx.push(new RegExp(fitString[i]));
-                }
                 var output = [];
                 for (var i = 0; i < searchArray.length; i++) {
-                    var searchWord = searchArray[i];
-                    var match = true;
-                    for (var j = 0; j < fitRegEx.length; j++) {
-                        match = match && fitRegEx[j].test(searchWord);
+                    var currentWord = searchArray[i];
+                    for (var j = 0; j < fitString.length; j++) {
+                        var index = currentWord.indexOf(fitString[j]);
+                        if (index > -1) {
+                            currentWord = currentWord.slice(0, index) + currentWord.slice(index + 1);
+                        } else {
+                            break;
+                        }
                     }
-                    if (match) {
-                        output.push(searchWord);
+                    if (currentWord.length + fitString.length == searchArray[i].length) {
+                        output.push(searchArray[i]);
                     }
                 }
                 return output;
+            }
+
+            /**
+             * word_fit_recursive - Takes in a string and an array of strings. Outputs an array of strings that contain
+             * the same letters as the single input string.  Same as above, but recursive instead of iterative.
+             * @param {string} fitString
+             * @param {string[]} searchArray
+             * @returns {string[]}
+             */
+            function word_fit_recursive(fitString, searchArray) {
+                "use strict"; // When browsers do finally implement TCO, the number of stack frames will be kept in check.
+                if (searchArray.length == 1) {
+                    return first_word_fit(fitString, searchArray[0], searchArray[0]);
+                }
+                return first_word_fit(fitString, searchArray[0], searchArray[0]).concat(word_fit_recursive(fitString, searchArray.slice(1)));
+
+                /**
+                 * first_word_fit - Takes in three strings. Outputs the third string wrapped in an array if the second
+                 * contains the same letters as the first input string.
+                 * @param {string} fitString
+                 * @param {string} searchWord
+                 * @param {string} currentWord
+                 * @returns {string[]|null[]}
+                 */
+                function first_word_fit(fitString, searchWord, currentWord) {
+                    var index = currentWord.indexOf(fitString[0]);
+                    if (index == -1) {
+                        return [];
+                    } else if (fitString.length == 1) {
+                        return [searchWord];
+                    } else {
+                        return first_word_fit(fitString.slice(1), searchWord, currentWord.slice(0, index) + currentWord.slice(index+1));
+                    }
+                }
             }
 
         </script>
