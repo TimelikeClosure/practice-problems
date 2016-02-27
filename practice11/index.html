@@ -9,8 +9,21 @@
 
             var test = [2,5,1,6,8,2,20,'cat',13,3];
 
-            function evenodd(ungroupedList) {
-
+            function evenOdd(ungroupedList) {
+                var output = {
+                    odd: [],
+                    even: []
+                };
+                for (var i = 0; i < ungroupedList.length; i++) {
+                    if (typeof ungroupedList[i] == "number") {
+                        if (ungroupedList[i] % 2 === 0 && output.even.indexOf(ungroupedList[i]) == -1) {
+                            output.even.push(ungroupedList[i]);
+                        } else if (ungroupedList[i] % 2 === 1 && output.odd.indexOf(ungroupedList[i]) == -1) {
+                            output.odd.push(ungroupedList[i]);
+                        }
+                    }
+                }
+                return output;
             }
 
         </script>
