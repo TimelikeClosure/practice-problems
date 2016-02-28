@@ -8,14 +8,18 @@
         <script>
             "use strict";
 
+            /**
+             * math_sequence - spits out a sequence for the given number, calculating it without hard-coding any numbers.
+             *     math_sequence(2) returns [4, 6, 8, 10, 12, 14, 16, 18, 20, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5]
+             * @param {number} number - Any number.  A small number would be good for your health.
+             * @returns {number[]} - sequence of numbers.
+             */
             function math_sequence(number) {
-                var array1 = [];
-                var array2 = [];
-                for (var i = 0; i <= Math.pow(number, number + 1); i++) {
-                    array1.push(number + (1 + i) * number);
-                    array2.push(Math.pow(number, number) + 1 + (1 + i) / number);
+                var array = [];
+                for (var i = -number / number; i <= number * number * number * number; i++) {
+                    array.push(i > number * number * number ? (number + number / number + i) / number : (number + number / number + i) * number);
                 }
-                return array1.concat(array2);
+                return array;
             }
 
         </script>
