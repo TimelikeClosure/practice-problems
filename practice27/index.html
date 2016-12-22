@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  
+  <head>
+    
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script>
+        /**
+         * @function fibonacci
+         * @parameter {int} sequenceLength
+         * @returns {int[]}
+         * @summary Generates the fibonacci sequence of length sequenceLength.
+         */
+        function fibonacci (sequenceLength){
+            var cache = {
+                0: 1,
+                1: 1
+            };
+
+            var sequence = [];
+
+            for (var i = 0; i < sequenceLength; i++){
+                sequence.push(fib(i));
+            }
+            return sequence;
+
+            function fib(index){
+                if (!cache.hasOwnProperty(index)){
+                    cache[index] = fib(index - 1) + fib(index - 2);
+                }
+                return cache[index];
+            }
+        }
+        console.log(fibonacci(24));
+    </script>
+    
+  </head>
+  
+  <body>
+
+  </body>
+  
+</html>
